@@ -1,0 +1,66 @@
+@if (contact.isModalOpen()) {
+  <div class="modal-backdrop" (click)="onBackdropClick($event)">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Book an appointment">
+      <button class="close-btn" (click)="close()" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+
+      @if (!submitted()) {
+        <div class="modal-head">
+          <span class="pill-badge">🩺 Free Consultation</span>
+          <h3>Book Your Appointment</h3>
+          <p>Share your details — our care team will call you back within 30 minutes, or chat instantly on WhatsApp.</p>
+        </div>
+
+        <form #f="ngForm" (ngSubmit)="submit(f)" novalidate>
+          <div class="field">
+            <label for="m-name">Full Name</label>
+            <input id="m-name" name="name" type="text" placeholder="Enter your name" [(ngModel)]="model.name" required minlength="2" #nameCtrl="ngModel">
+            @if (nameCtrl.invalid && nameCtrl.touched) { <span class="err">Please enter your name</span> }
+          </div>
+
+          <div class="field">
+            <label for="m-mobile">Mobile Number</label>
+            <input id="m-mobile" name="mobile" type="tel" placeholder="10-digit mobile number" [(ngModel)]="model.mobile" required pattern="[0-9]{10}" #mobileCtrl="ngModel">
+            @if (mobileCtrl.invalid && mobileCtrl.touched) { <span class="err">Enter a valid 10-digit number</span> }
+          </div>
+
+          <div class="field">
+            <label for="m-city">City</label>
+            <input id="m-city" name="city" type="text" placeholder="Your city" [(ngModel)]="model.city" required #cityCtrl="ngModel">
+            @if (cityCtrl.invalid && cityCtrl.touched) { <span class="err">Please enter your city</span> }
+          </div>
+
+          <div class="field">
+            <label for="m-disease">Health Concern</label>
+            <select id="m-disease" name="disease" [(ngModel)]="model.disease" required #diseaseCtrl="ngModel">
+              <option value="" disabled selected>Select a concern</option>
+              @for (d of diseases; track d) {
+                <option [value]="d">{{ d }}</option>
+              }
+            </select>
+            @if (diseaseCtrl.invalid && diseaseCtrl.touched) { <span class="err">Please select a concern</span> }
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Confirm on WhatsApp</button>
+
+          <div class="or-divider"><span>or</span></div>
+
+          <button type="button" class="btn btn-outline btn-block" (click)="contact.callNow()">
+            Call Us: {{ contact.phoneDisplay }}
+          </button>
+        </form>
+      } @else {
+        <div class="success-state">
+          <div class="success-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <h3>Request Sent!</h3>
+          <p>We've opened WhatsApp with your details pre-filled. Hit send there and our team will confirm your slot shortly.</p>
+          <button class="btn btn-primary btn-block" (click)="close()">Done</button>
+          <button class="btn btn-outline btn-block" (click)="bookAnother()">Book another appointment</button>
+        </div>
+      }
+    </div>
+  </div>
+}

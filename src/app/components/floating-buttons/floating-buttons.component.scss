@@ -1,0 +1,48 @@
+.floating-stack {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 900;
+}
+
+.fab {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  transition: transform .18s ease;
+}
+.fab:hover { transform: translateY(-3px) scale(1.04); }
+.fab:active { transform: scale(0.95); }
+
+.fab-whatsapp { background: #25d366; }
+.fab-call { background: var(--color-primary); }
+
+.ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  opacity: 0.55;
+  animation: pulse-ring 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.55; }
+  70% { transform: scale(1.35); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .floating-stack { right: 14px; bottom: 14px; gap: 12px; }
+  .fab { width: 52px; height: 52px; }
+}
