@@ -1,6 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ContactService, AppointmentPayload } from '../../services/contact.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-appointment-modal',
@@ -12,6 +13,7 @@ import { ContactService, AppointmentPayload } from '../../services/contact.servi
 export class AppointmentModalComponent implements OnInit {
   model: AppointmentPayload = { name: '', mobile: '', city: '', disease: '' };
   submitted = signal(false);
+  submitting = signal(false);
 
   diseases = [
     'Piles (Hemorrhoids)',
@@ -25,7 +27,7 @@ export class AppointmentModalComponent implements OnInit {
     'Other / Not sure'
   ];
 
-  constructor(public contact: ContactService) {}
+  constructor(public contact: ContactService, private toast: ToastService) {}
 
   ngOnInit(): void {
     // Auto-show the appointment popup shortly after the page loads
@@ -49,8 +51,19 @@ export class AppointmentModalComponent implements OnInit {
       Object.values(form.controls).forEach(c => c.markAsTouched());
       return;
     }
-    this.submitted.set(true);
-    this.contact.openWhatsapp(this.model);
+    this.submitting.set(true);
+    this.contact.submitAppointment(this.model).subscribe({
+      next: (res) => {
+        this.submitting.set(false);
+        this.submitted.set(true);
+        this.toast.success(res.message || 'Appointment submitted successfully.');
+        this.contact.openWhatsapp(this.model);
+      },
+      error: () => {
+        this.submitting.set(false);
+        this.toast.error('Could not submit appointment. Please try again or call us directly.');
+      }
+    });
   }
 
   bookAnother(): void {

@@ -1,0 +1,15 @@
+<div class="toast-stack">
+  @for (t of toast.toasts(); track t.id) {
+    <div class="toast" [class]="t.type">
+      <span class="icon">
+        @switch (t.type) {
+          @case ('success') { ✅ }
+          @case ('error') { ⚠️ }
+          @default { ℹ️ }
+        }
+      </span>
+      <span class="msg">{{ t.message }}</span>
+      <button class="close" (click)="toast.dismiss(t.id)" aria-label="Dismiss">✕</button>
+    </div>
+  }
+</div>

@@ -2,15 +2,26 @@
   position: sticky;
   top: 0;
   z-index: 500;
-  background: rgba(246, 250, 255, 0.85);
-  backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
-  transition: box-shadow .25s ease, border-color .25s ease, background .25s ease;
+  transition: box-shadow .25s ease, border-color .25s ease;
+  // ❌ remove backdrop-filter and background from here directly
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(246, 250, 255, 0.85);
+    backdrop-filter: blur(10px);
+    transition: background .25s ease;
+  }
 
   &.scrolled {
-    background: rgba(255,255,255,0.95);
     border-bottom-color: var(--border);
     box-shadow: 0 2px 16px rgba(11,31,51,0.06);
+  }
+  &.scrolled::before {
+    background: rgba(255,255,255,0.95);
   }
 }
 

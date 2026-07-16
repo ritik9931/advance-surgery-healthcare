@@ -1,0 +1,110 @@
+@if (!contact.isAdminAuthed()) {
+  <section class="admin-login">
+    <div class="login-card">
+      <span class="eyebrow">Staff Access</span>
+      <h2>Admin Login</h2>
+      <p>Enter the staff passcode to view booked appointments.</p>
+      <form (ngSubmit)="login()">
+        <input
+          type="password"
+          name="passcode"
+          placeholder="Enter passcode"
+          [(ngModel)]="passcode"
+          autocomplete="current-password"
+          required>
+        @if (loginError()) { <span class="err">Incorrect passcode. Please try again.</span> }
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+      <p class="hint">Default passcode is set in <code>contact.service.ts</code> — change it before going live.</p>
+    </div>
+  </section>
+} @else {
+  <section class="admin-panel">
+    <div class="container">
+      <div class="admin-head">
+        <div>
+          <span class="eyebrow">Staff Dashboard</span>
+          <h2>Booked Appointments</h2>
+          <p>{{ filtered().length }} of {{ appointments().length }} appointment(s) shown</p>
+        </div>
+        <div class="head-actions">
+          <button class="btn btn-outline" (click)="loadAppointments()">Refresh</button>
+          <button class="btn btn-outline" (click)="logout()">Log Out</button>
+        </div>
+      </div>
+
+      <div class="admin-toolbar">
+        <input
+          type="text"
+          placeholder="Search by name, mobile, city or concern..."
+          [ngModel]="search()"
+          (ngModelChange)="search.set($event)">
+        <div class="toolbar-actions">
+          <button class="btn btn-outline" (click)="exportCsv()">Export CSV</button>
+        </div>
+      </div>
+
+      @if (loading()) {
+        <div class="empty-state">
+          <span>⏳</span>
+          <h4>Loading appointments...</h4>
+        </div>
+      } @else if (loadError()) {
+        <div class="empty-state">
+          <span>⚠️</span>
+          <h4>Couldn't load appointments</h4>
+          <p>Please check your connection and try again.</p>
+          <button class="btn btn-primary" (click)="loadAppointments()">Retry</button>
+        </div>
+      } @else if (filtered().length === 0) {
+        <div class="empty-state">
+          <span>📋</span>
+          <h4>No appointments yet</h4>
+          <p>Appointments booked through the Home page form or the popup will show up here automatically.</p>
+        </div>
+      } @else {
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>City</th>
+                <th>Concern</th>
+                <th>Status</th>
+                <th>Submitted</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (a of filtered(); track a.id) {
+                <tr>
+                  <td class="name-cell">{{ a.name }}</td>
+                  <td>{{ a.mobile }}</td>
+                  <td>{{ a.city }}</td>
+                  <td><span class="tag">{{ a.disease }}</span></td>
+                  <td>
+                    <select
+                      class="status-select"
+                      [class]="'status-' + a.status"
+                      [ngModel]="a.status"
+                      (ngModelChange)="onStatusChange(a, $event)">
+                      @for (opt of statusOptions; track opt) {
+                        <option [value]="opt">{{ opt | titlecase }}</option>
+                      }
+                    </select>
+                  </td>
+                  <td class="muted">{{ formatDate(a.submitted_at) }}</td>
+                  <td class="actions">
+                    <a [href]="'tel:' + a.mobile" title="Call">📞</a>
+                    <a [href]="waLink(a.mobile)" target="_blank" rel="noopener" title="WhatsApp">💬</a>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </div>
+  </section>
+}

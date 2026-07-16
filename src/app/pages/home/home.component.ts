@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ContactService, AppointmentPayload } from '../../services/contact.service';
+import { ToastService } from '../../services/toast.service';
 import { SpecialtyIconComponent, SpecialtyKey } from '../../components/specialty-icons/specialty-icon.component';
 
 interface Specialty {
@@ -35,6 +36,7 @@ interface Review {
 export class HomeComponent {
   heroModel: AppointmentPayload = { name: '', mobile: '', city: '', disease: '' };
   heroSubmitted = false;
+  heroSubmitting = false;
 
   stats = [
     { value: '15,000+', label: 'Successful Surgeries' },
@@ -77,19 +79,31 @@ export class HomeComponent {
     { title: 'Transparent Pricing', desc: 'No hidden costs — insurance & cashless support available.', icon: '💳' }
   ];
 
-  constructor(public contact: ContactService) {}
+  constructor(public contact: ContactService, private toast: ToastService) {}
 
   submitHero(form: NgForm): void {
     if (form.invalid) {
       Object.values(form.controls).forEach(c => c.markAsTouched());
       return;
     }
-    this.heroSubmitted = true;
-    this.contact.openWhatsapp(this.heroModel);
+    this.heroSubmitting = true;
+    this.contact.submitAppointment(this.heroModel).subscribe({
+      next: (res) => {
+        this.heroSubmitting = false;
+        this.heroSubmitted = true;
+        this.toast.success(res.message || 'Appointment submitted successfully.');
+        this.contact.openWhatsapp(this.heroModel);
+      },
+      error: () => {
+        this.heroSubmitting = false;
+        this.toast.error('Could not submit appointment. Please try again or call us directly.');
+      }
+    });
   }
 
   resetHero(): void {
     this.heroSubmitted = false;
+    this.heroSubmitting = false;
     this.heroModel = { name: '', mobile: '', city: '', disease: '' };
   }
 

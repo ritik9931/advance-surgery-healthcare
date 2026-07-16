@@ -49,7 +49,9 @@
               </select>
               @if (d.invalid && d.touched) { <span class="err">Please select a concern</span> }
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Get a Callback</button>
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="heroSubmitting">
+              {{ heroSubmitting ? 'Submitting...' : 'Get a Callback' }}
+            </button>
           </form>
           <p class="micro-note">🔒 Your information is confidential &amp; secure</p>
         } @else {

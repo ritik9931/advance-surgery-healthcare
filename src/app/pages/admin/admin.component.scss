@@ -1,0 +1,159 @@
+.admin-login {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #eef6fc, #f6faff);
+  padding: 40px 20px;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 380px;
+
+  h2 { font-size: 22px; margin: 10px 0 6px; }
+  p { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
+
+  input {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 15px;
+    margin-bottom: 8px;
+    &:focus { outline: none; border-color: var(--color-primary); }
+  }
+
+  .err { display: block; color: #d64545; font-size: 12.5px; margin-bottom: 12px; }
+  button { margin-top: 8px; }
+  .hint { margin-top: 18px; font-size: 12px; color: var(--text-muted); text-align: center; }
+  code { background: var(--bg-alt); padding: 2px 6px; border-radius: 4px; }
+}
+
+.head-actions { display: flex; gap: 10px; }
+
+.status-select {
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--bg-alt);
+  color: var(--text);
+
+  &.status-pending { background: #fff5e6; color: #b7791f; border-color: #f5deb3; }
+  &.status-contacted { background: #e8f1fa; color: var(--color-primary); border-color: #cfe3f5; }
+  &.status-confirmed { background: #e6f9ee; color: var(--success); border-color: #c8ecd7; }
+  &.status-cancelled { background: #fdeeee; color: #d64545; border-color: #f3cfcf; }
+  &.status-completed { background: #eef0f5; color: #4a5568; border-color: #dde1e8; }
+}
+
+.admin-panel { padding: 44px 0 80px; }
+
+.admin-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 26px;
+
+  h2 { font-size: 26px; margin: 8px 0 6px; }
+  p { color: var(--text-muted); font-size: 13.5px; }
+}
+
+.admin-toolbar {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+
+  input {
+    flex: 1;
+    min-width: 220px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 11px 14px;
+    font-size: 14.5px;
+    &:focus { outline: none; border-color: var(--color-primary); }
+  }
+}
+
+.toolbar-actions { display: flex; gap: 10px; }
+.btn.danger { color: #d64545; border-color: #f3cfcf; &:hover { background: #fdeeee; border-color: #d64545; } }
+
+.empty-state {
+  text-align: center;
+  padding: 70px 20px;
+  background: #fff;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+
+  span { font-size: 34px; display: block; margin-bottom: 14px; }
+  h4 { font-size: 17px; margin-bottom: 8px; }
+  p { color: var(--text-muted); font-size: 14px; max-width: 380px; margin: 0 auto; }
+}
+
+.table-wrap {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+
+table { width: 100%; border-collapse: collapse; min-width: 640px; }
+
+thead th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  padding: 14px 18px;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+tbody td {
+  padding: 14px 18px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: var(--bg-alt); }
+
+.name-cell { font-weight: 600; }
+.muted { color: var(--text-muted); font-size: 13px; }
+
+.tag {
+  display: inline-block;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  a, button {
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0.8;
+    &:hover { opacity: 1; }
+  }
+}
+
+@media (max-width: 560px) {
+  .admin-toolbar { flex-direction: column; align-items: stretch; }
+  .toolbar-actions { justify-content: stretch; button { flex: 1; } }
+}

@@ -1,3 +1,35 @@
+.map-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 50px;
+
+  iframe { display: block; }
+}
+
+.map-card {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-md);
+  max-width: 260px;
+
+  h4 { font-size: 15px; margin-bottom: 6px; }
+  p { font-size: 13.5px; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px; }
+  .c-icon { margin-bottom: 10px; }
+}
+
+.btn-sm { padding: 9px 18px; font-size: 13px; }
+
+@media (max-width: 560px) {
+  .map-card { position: static; max-width: none; border-radius: 0; box-shadow: none; border-top: 1px solid var(--border); }
+}
+
 .contact-hero {
   background: linear-gradient(180deg, #eef6fc, #f6faff);
   padding: 70px 0 60px;

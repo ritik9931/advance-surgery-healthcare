@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ContactService } from '../../services/contact.service';
 
 @Component({
@@ -8,5 +9,9 @@ import { ContactService } from '../../services/contact.service';
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  constructor(public contact: ContactService) {}
+  mapUrl: SafeResourceUrl;
+
+  constructor(public contact: ContactService, private sanitizer: DomSanitizer) {
+    this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.contact.mapsEmbedUrl);
+  }
 }
