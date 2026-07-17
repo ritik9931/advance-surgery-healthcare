@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 export type SpecialtyKey =
   | 'piles' | 'fistula' | 'fissure' | 'gallstone'
-  | 'kidney' | 'hernia' | 'circumcision' | 'prostate';
+  | 'kidney' | 'hernia' | 'circumcision' | 'prostate' | 'frenuloplasty';
 
 @Component({
   selector: 'app-specialty-icon',
@@ -16,6 +16,14 @@ export type SpecialtyKey =
           <circle cx="26" cy="22" r="2.6" fill="var(--color-accent)"/>
           <circle cx="36" cy="18" r="2.6" fill="var(--color-accent)"/>
           <circle cx="40" cy="26" r="2.6" fill="var(--color-accent)"/>
+        }
+        @case ('frenuloplasty') {
+          <path d="M24 10c0 8 2 12 2 18s-2 10-2 18" stroke="var(--color-primary)" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M40 10c0 8-2 12-2 18s2 10 2 18" stroke="var(--color-primary)" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M26 28h12" stroke="var(--color-accent)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 4.5"/>
+          <path d="M30 22l4 4-4 4" stroke="var(--color-accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="24" cy="14" r="1.8" fill="var(--color-primary)"/>
+          <circle cx="40" cy="14" r="1.8" fill="var(--color-primary)"/>
         }
         @case ('fistula') {
           <path d="M32 8c-9 0-14 7-14 15 0 12 6 18 6 26" stroke="var(--color-primary)" stroke-width="2.4" stroke-linecap="round"/>

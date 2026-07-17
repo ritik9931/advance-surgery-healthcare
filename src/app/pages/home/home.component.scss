@@ -56,15 +56,26 @@
 }
 
 .hero-trust {
-  display: flex;
-  gap: 34px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 28px 40px;
 }
 .trust-item {
   display: flex;
   flex-direction: column;
-  strong { font-family: var(--font-display); font-size: 24px; color: var(--color-primary); font-weight: 700; }
-  span { font-size: 12.5px; color: var(--text-muted); font-weight: 600; }
+  strong {
+    font-family: var(--font-display);
+    font-size: 30px;
+    line-height: 1.1;
+    color: var(--color-primary);
+    font-weight: 800;
+  }
+  span {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: 4px;
+  }
 }
 
 .hero-form-wrap { position: relative; }
@@ -180,7 +191,9 @@
   background: var(--color-primary-light);
   color: var(--color-primary);
 
-  &[data-tag="Urology"] { background: var(--color-accent-light); color: var(--color-accent-dark); }
+  &[data-tag="Urology"] { background: #f3eafc; color: #7c3aed; }
+  &[data-tag="Frenuloplasty"] { background: var(--color-accent-light); color: var(--color-accent-dark); }
+  &[data-tag="Circumcision"] { background: var(--color-accent-light); color: var(--color-accent-dark); }
   &[data-tag="General Surgery"] { background: #ecf7f1; color: var(--success); }
 }
 
@@ -334,7 +347,7 @@
   .review-grid { grid-template-columns: 1fr; }
   .hero-cta { flex-direction: column; align-items: stretch; }
   .btn-ghost-outline, .hero-cta .btn-primary { width: 100%; }
-  .hero-trust { justify-content: space-between; gap: 16px; }
+  .hero-trust { grid-template-columns: repeat(2, auto); justify-content: space-between; gap: 20px 16px; }
   .cta-inner { text-align: center; justify-content: center; }
 }
 

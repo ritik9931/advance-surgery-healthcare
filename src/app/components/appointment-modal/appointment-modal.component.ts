@@ -16,13 +16,16 @@ export class AppointmentModalComponent implements OnInit {
   submitting = signal(false);
 
   diseases = [
+    'Stapler Circumcision',
+    'Frenuloplasty',
+    'Laser Circumcision',
+    'Phimosis',
     'Piles (Hemorrhoids)',
     'Anal Fistula',
     'Anal Fissure',
     'Gallstone',
     'Kidney Stones',
     'Hernia',
-    'Laser Circumcision',
     'Enlarged Prostate (BPH)',
     'Other / Not sure'
   ];

@@ -8,7 +8,7 @@ interface Specialty {
   key: SpecialtyKey;
   name: string;
   desc: string;
-  tag: 'Proctology' | 'Urology' | 'General Surgery';
+  tag: 'Proctology' | 'Urology' | 'General Surgery' | 'Frenuloplasty' | 'Circumcision';
 }
 
 interface Doctor {
@@ -16,6 +16,7 @@ interface Doctor {
   role: string;
   exp: string;
   photo: string;
+  specialty: SpecialtyKey;
 }
 
 interface Review {
@@ -39,28 +40,32 @@ export class HomeComponent {
   heroSubmitting = false;
 
   stats = [
-    { value: '15,000+', label: 'Successful Surgeries' },
-    { value: '18+', label: 'Years of Excellence' },
-    { value: '25+', label: 'Expert Surgeons' },
+    { value: '15,000+', label: 'Successful Treatments' },
+    { value: '20+', label: 'Years of Excellence' },
+    { value: '60+', label: 'Expert Doctors' },
+    { value: '60+', label: 'Partner Hospitals' },
+    { value: '50+', label: 'Cities Served' },
     { value: '4.8/5', label: 'Patient Rating' }
   ];
 
   specialties: Specialty[] = [
+    { key: 'circumcision', name: 'Laser Circumcision', desc: 'Stitch-less, bloodless laser circumcision.', tag: 'Circumcision' },
+    { key: 'frenuloplasty', name: 'Frenuloplasty', desc: 'Minimally invasive frenuloplasty procedure.', tag: 'Frenuloplasty' },
     { key: 'piles', name: 'Piles (Hemorrhoids)', desc: 'Painless Laser Piles surgery with same-day discharge.', tag: 'Proctology' },
     { key: 'fistula', name: 'Anal Fistula', desc: 'Advanced VAAFT & laser fistula treatment.', tag: 'Proctology' },
-    { key: 'fissure', name: 'Anal Fissure', desc: 'Minimally invasive fissure care, fast healing.', tag: 'Proctology' },
+    // { key: 'fissure', name: 'Anal Fissure', desc: 'Minimally invasive fissure care, fast healing.', tag: 'Proctology' },
     { key: 'gallstone', name: 'Gallstone', desc: 'Laparoscopic gallbladder stone removal.', tag: 'General Surgery' },
     { key: 'kidney', name: 'Kidney Stones', desc: 'Laser lithotripsy for quick, painless recovery.', tag: 'Urology' },
     { key: 'hernia', name: 'Hernia', desc: 'Laparoscopic hernia repair with mesh technique.', tag: 'General Surgery' },
-    { key: 'circumcision', name: 'Laser Circumcision', desc: 'Stitch-less, bloodless laser circumcision.', tag: 'Urology' },
+    
     { key: 'prostate', name: 'Enlarged Prostate (BPH)', desc: 'Advanced TURP & laser prostate treatment.', tag: 'Urology' }
   ];
 
   doctors: Doctor[] = [
-    { name: 'Dr. Rakesh Verma', role: 'Chief Proctologist & Laser Surgeon', exp: '20+ Years Experience', photo: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop' },
-    { name: 'Dr. Anjali Mehta', role: 'Senior Urologist', exp: '16+ Years Experience', photo: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=400&auto=format&fit=crop' },
-    { name: 'Dr. Suresh Iyer', role: 'General & Laparoscopic Surgeon', exp: '14+ Years Experience', photo: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=400&auto=format&fit=crop' },
-    { name: 'Dr. Neha Kulkarni', role: 'Consultant Urologist', exp: '12+ Years Experience', photo: 'https://images.unsplash.com/photo-1651008376811-b90baee60c1f?q=80&w=400&auto=format&fit=crop' }
+    { name: 'Dr. Rakesh Verma', role: 'Laser Circumcision Specialist', exp: '20+ Years Experience', photo: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop', specialty: 'circumcision' },
+    { name: 'Dr. Suresh Iyer', role: 'Frenuloplasty Surgeon', exp: '14+ Years Experience', photo: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=400&auto=format&fit=crop', specialty: 'frenuloplasty' },
+    { name: 'Dr. Arvind Nair', role: 'Chief Proctologist — Piles Care', exp: '18+ Years Experience', photo: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&auto=format&fit=crop', specialty: 'piles' },
+    { name: 'Dr. Manoj Deshpande', role: 'Fistula & VAAFT Specialist', exp: '15+ Years Experience', photo: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=400&auto=format&fit=crop', specialty: 'fistula' }
   ];
 
   reviews: Review[] = [
