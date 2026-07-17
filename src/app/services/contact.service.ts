@@ -80,8 +80,8 @@ export class ContactService {
   /** Opens WhatsApp chat, optionally with a pre-filled appointment message */
   openWhatsapp(payload?: Partial<AppointmentPayload>): void {
     const message = payload
-      ? `Hello Advance Surgery Health Care, I would like to book an appointment.%0A%0AName: ${payload.name || '-'}%0AMobile: ${payload.mobile || '-'}%0ACity: ${payload.city || '-'}%0AConcern: ${payload.disease || '-'}`
-      : 'Hello Advance Surgery Health Care, I would like to book an appointment.';
+      ? `Hello Priva Health Care, I would like to book an appointment.%0A%0AName: ${payload.name || '-'}%0AMobile: ${payload.mobile || '-'}%0ACity: ${payload.city || '-'}%0AConcern: ${payload.disease || '-'}`
+      : 'Hello Priva Health Care, I would like to book an appointment.';
     const url = `https://wa.me/${this.whatsappNumber}?text=${message}`;
     window.open(url, '_blank');
   }
