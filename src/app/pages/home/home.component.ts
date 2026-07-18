@@ -51,9 +51,10 @@ export class HomeComponent {
   specialties: Specialty[] = [
     { key: 'circumcision', name: 'Laser Circumcision', desc: 'Stitch-less, bloodless laser circumcision.', tag: 'Circumcision' },
     { key: 'frenuloplasty', name: 'Frenuloplasty', desc: 'Minimally invasive frenuloplasty procedure.', tag: 'Frenuloplasty' },
+    { key: 'circumcision', name: 'Stapler Circumcision', desc: 'Minimally invasive stapler circumcision.', tag: 'Circumcision' },
     { key: 'piles', name: 'Piles (Hemorrhoids)', desc: 'Painless Laser Piles surgery with same-day discharge.', tag: 'Proctology' },
     { key: 'fistula', name: 'Anal Fistula', desc: 'Advanced VAAFT & laser fistula treatment.', tag: 'Proctology' },
-    // { key: 'fissure', name: 'Anal Fissure', desc: 'Minimally invasive fissure care, fast healing.', tag: 'Proctology' },
+    { key: 'fissure', name: 'Anal Fissure', desc: 'Minimally invasive fissure care, fast healing.', tag: 'Proctology' },
     { key: 'gallstone', name: 'Gallstone', desc: 'Laparoscopic gallbladder stone removal.', tag: 'General Surgery' },
     { key: 'kidney', name: 'Kidney Stones', desc: 'Laser lithotripsy for quick, painless recovery.', tag: 'Urology' },
     { key: 'hernia', name: 'Hernia', desc: 'Laparoscopic hernia repair with mesh technique.', tag: 'General Surgery' },
@@ -62,7 +63,7 @@ export class HomeComponent {
   ];
 
   doctors: Doctor[] = [
-    { name: 'Dr. Rakesh Verma', role: 'Laser Circumcision Specialist', exp: '20+ Years Experience', photo: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop', specialty: 'circumcision' },
+    { name: 'Dr. Rakesh Verma', role: 'Laser & Stapler Circumcision Specialist', exp: '20+ Years Experience', photo: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop', specialty: 'circumcision' },
     { name: 'Dr. Suresh Iyer', role: 'Frenuloplasty Surgeon', exp: '14+ Years Experience', photo: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=400&auto=format&fit=crop', specialty: 'frenuloplasty' },
     { name: 'Dr. Arvind Nair', role: 'Chief Proctologist — Piles Care', exp: '18+ Years Experience', photo: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&auto=format&fit=crop', specialty: 'piles' },
     { name: 'Dr. Manoj Deshpande', role: 'Fistula & VAAFT Specialist', exp: '15+ Years Experience', photo: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=400&auto=format&fit=crop', specialty: 'fistula' }
@@ -78,7 +79,7 @@ export class HomeComponent {
   diseases = this.specialties.map(s => s.name).concat('Other / Not sure');
 
   whyUs = [
-    { title: 'Laser & Minimally Invasive', desc: 'Stitch-less, blood-less procedures with faster recovery.', icon: '⚡' },
+    { title: 'Laser & Stapler Circumcision', desc: 'Stitch-less, blood-less procedures with faster recovery.', icon: '⚡' },
     { title: 'Same-Day Discharge', desc: 'Most procedures allow you to go home the same day.', icon: '🏠' },
     { title: 'Expert Surgeons', desc: 'Board-certified specialists with 10+ years of experience.', icon: '🎓' },
     { title: 'Transparent Pricing', desc: 'No hidden costs — insurance & cashless support available.', icon: '💳' }

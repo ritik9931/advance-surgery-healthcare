@@ -9,7 +9,7 @@ import { ContactService } from '../../services/contact.service';
 })
 export class AboutComponent {
   milestones = [
-    { year: '2014', text: 'Priva Health Care was founded to provide advanced Stapler Circumcision and Frenuloplasty care.' },
+    { year: '2014', text: 'Priva Health Care was founded to provide advanced Laser & Stapler Circumcision and Frenuloplasty care.' },
     { year: '2017', text: 'Expanded services with advanced laser treatments for Piles, Fistula, and Fissure.' },
     { year: '2021', text: 'Introduced comprehensive Urology and General Surgery specialties.' },
     { year: '2026', text: 'Successfully performed 15,000+ minimally invasive procedures with excellent patient outcomes.' }
