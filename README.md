@@ -1,4 +1,4 @@
-# Advance Surgery Health Care — Website (Angular 17)
+# Priva Health Care — Website (Angular 17)
 
 A mobile-friendly, industry-level hospital website for a **Proctology & Urology** speciality hospital, built in Angular (standalone components, Angular 17 control-flow syntax).
 
