@@ -49,9 +49,9 @@ export class HomeComponent {
   ];
 
   specialties: Specialty[] = [
-    { key: 'circumcision', name: 'Laser Circumcision', desc: 'Stitch-less, bloodless laser circumcision.', tag: 'Circumcision' },
-    { key: 'frenuloplasty', name: 'Frenuloplasty', desc: 'Minimally invasive frenuloplasty procedure.', tag: 'Frenuloplasty' },
     { key: 'circumcision', name: 'Stapler Circumcision', desc: 'Minimally invasive stapler circumcision.', tag: 'Circumcision' },
+    { key: 'frenuloplasty', name: 'Frenuloplasty', desc: 'Minimally invasive frenuloplasty procedure.', tag: 'Frenuloplasty' },
+    { key: 'circumcision', name: 'Laser Circumcision', desc: 'Stitch-less, bloodless laser circumcision.', tag: 'Circumcision' },
     { key: 'piles', name: 'Piles (Hemorrhoids)', desc: 'Painless Laser Piles surgery with same-day discharge.', tag: 'Proctology' },
     { key: 'fistula', name: 'Anal Fistula', desc: 'Advanced VAAFT & laser fistula treatment.', tag: 'Proctology' },
     { key: 'fissure', name: 'Anal Fissure', desc: 'Minimally invasive fissure care, fast healing.', tag: 'Proctology' },
@@ -62,11 +62,11 @@ export class HomeComponent {
   ];
 
   doctors: Doctor[] = [
-    { name: 'Dr. Rakesh Verma', role: 'Stapler & Laser Circumcision Specialist', exp: '20+ Years Experience', photo: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop', specialty: 'circumcision' },
-    { name: 'Dr. Suresh Iyer', role: 'Frenuloplasty Surgeon', exp: '14+ Years Experience', photo: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=400&auto=format&fit=crop', specialty: 'frenuloplasty' },
-    { name: 'Dr. Arvind Nair', role: 'Chief Proctologist — Piles Care', exp: '18+ Years Experience', photo: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&auto=format&fit=crop', specialty: 'piles' },
-    { name: 'Dr. Manoj Deshpande', role: 'Fistula & VAAFT Specialist', exp: '15+ Years Experience', photo: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=400&auto=format&fit=crop', specialty: 'fistula' }
-  ];
+  { name: 'Dr. Rakesh Verma', role: 'Stapler & Laser Circumcision Specialist', exp: '20+ Years Experience', photo: 'assets/doctor.png', specialty: 'circumcision' },
+  { name: 'Dr. Suresh Iyer', role: 'Frenuloplasty Surgeon', exp: '14+ Years Experience', photo: 'assets/doctor.png', specialty: 'frenuloplasty' },
+  { name: 'Dr. Arvind Nair', role: 'Chief Proctologist — Piles Care', exp: '18+ Years Experience', photo: 'assets/doctor.png', specialty: 'piles' },
+  { name: 'Dr. Manoj Deshpande', role: 'Fistula & VAAFT Specialist', exp: '15+ Years Experience', photo: 'assets/doctor.png', specialty: 'fistula' }
+];
 
   reviews: Review[] = [
     { name: 'Ramesh Gupta', city: 'Hyderabad', rating: 5, procedure: 'Stapler Circumcision', text: 'Painless procedure, was discharged the same evening. The staff was caring and explained everything clearly before surgery.' },

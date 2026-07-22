@@ -45,9 +45,9 @@ export class ContactService {
   private readonly apiBase = 'https://yo4vts.in/vtswebapi/api/appointment';
 
   /** Clinic WhatsApp / Call number (kept in one place so it's easy to update) */
-  readonly phoneDisplay = '+91 80824 06454';
-  readonly phoneDial = '+918082406454';
-  readonly whatsappNumber = '918082406454'; // country code + number, no plus/spaces
+  readonly phoneDisplay = '+91 9103368409';
+  readonly phoneDial = '+919103368409';
+  readonly whatsappNumber = '919103368409'; // country code + number, no plus/spaces
 
   /** Clinic location — used for the Google Maps embed on the Contact page */
   readonly address = '123 Health Avenue, Banjara Hills, Hyderabad, Telangana';
